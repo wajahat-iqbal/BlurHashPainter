@@ -19,7 +19,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.imageloading.domain.domain_model.ImagesDomainModel
@@ -51,32 +53,6 @@ class MainActivity : ComponentActivity() {
                     LazyColumn(
                         state = rememberLazyListState(),
                         content = {
-                            item {
-                                TopAppBar(elevation = 0.dp, title = {
-                                    Row(
-                                        horizontalArrangement = Arrangement.Start,
-                                        verticalAlignment = Alignment.CenterVertically
-                                    ) {
-                                        Text(
-                                            text = "Image Loading",
-                                            style = MaterialTheme.typography.h6,
-                                            fontWeight = FontWeight.Bold,
-                                            textAlign = TextAlign.Start,
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                        )
-
-                                    }
-                                }, backgroundColor = LightPH, navigationIcon = {
-                                    IconButton(onClick = { viewModel.getImages() }) {
-                                        Image(
-                                            painter = painterResource(id = R.drawable.ic_baseline_replay_24),
-                                            contentDescription = null,
-                                            modifier = Modifier.offset(x = (4.dp))
-                                        )
-                                    }
-                                })
-                            }
                             when (imageDataSate.value) {
                                 is ImageLoadingState.Idle -> {
 
@@ -95,7 +71,39 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                                 is ImageLoadingState.Success -> {
-                                    imageCards((imageDataSate.value as ImageLoadingState.Success).data)
+                                    val imageLoadingDomainModel = (imageDataSate.value as ImageLoadingState.Success).data
+                                    item {
+                                        TopAppBar(elevation = 0.dp, title = {
+                                            Column{
+                                                Text(
+                                                    text = "Network Time : ${imageLoadingDomainModel.networkCallTime}",
+                                                    style = MaterialTheme.typography.h6.copy(
+                                                        fontSize = 15.sp
+                                                    ),
+                                                    textAlign = TextAlign.Start,
+                                                    modifier = Modifier.fillMaxWidth()
+                                                )
+                                                Text(
+                                                    text = "BlurHash to ImageBitmap Time : ${imageLoadingDomainModel.blurHashToImageBitmapTime} ",
+                                                    style = MaterialTheme.typography.h6.copy(
+                                                        fontSize = 15.sp
+                                                    ),
+                                                    textAlign = TextAlign.Start,
+                                                    modifier = Modifier.fillMaxWidth()
+                                                )
+
+                                            }
+                                        }, backgroundColor = LightPH, navigationIcon = {
+                                            IconButton(onClick = { viewModel.getImages() }) {
+                                                Image(
+                                                    painter = painterResource(id = R.drawable.ic_baseline_replay_24),
+                                                    contentDescription = null,
+                                                    modifier = Modifier.offset(x = (4.dp))
+                                                )
+                                            }
+                                        })
+                                    }
+                                    imageCards(imageLoadingDomainModel.images)
                                 }
                                 is ImageLoadingState.Error -> {
 
@@ -122,7 +130,7 @@ fun LazyListScope.imageCards(list: List<ImagesDomainModel>) {
                     .fillMaxSize(),
                 model = ImageRequest.Builder(
                     LocalContext.current
-                ).data(item.landscape.src).crossfade(true).build(),
+                ).data(item.original.src).crossfade(true).build(),
                  placeholder = painter,
                 contentScale = ContentScale.FillWidth,
             )

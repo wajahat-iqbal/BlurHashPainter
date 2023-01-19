@@ -33,14 +33,13 @@ fun ImagesDTO.asDomainModel(bitmap: ImageBitmap?) = ImagesDomainModel(
 )
 
 fun List<ImagesDTO>.asDomainModel():List<ImagesDomainModel> = this.map {
-    val size = getBitMapSize(it.tiny.width,it.tiny.height, 0.5f)
+    val size = getBitMapSize(it.tiny.width,it.tiny.height, 0.3f)
     val bitmap =
     BlurHashDecoder.decode(
         it.blurHash,
         size.first,
         size.second
     )
-    BlurHashDecoder.clearCache()
     if (bitmap != null ) it.asDomainModel(bitmap.asImageBitmap())
     else it.asDomainModel(null)
 }
