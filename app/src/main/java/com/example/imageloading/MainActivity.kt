@@ -78,15 +78,15 @@ class MainActivity : ComponentActivity() {
                                                 Text(
                                                     text = "Network Time : ${imageLoadingDomainModel.networkCallTime}",
                                                     style = MaterialTheme.typography.h6.copy(
-                                                        fontSize = 15.sp
+                                                        fontSize = 12.sp
                                                     ),
                                                     textAlign = TextAlign.Start,
                                                     modifier = Modifier.fillMaxWidth()
                                                 )
                                                 Text(
-                                                    text = "BlurHash to ImageBitmap Time : ${imageLoadingDomainModel.blurHashToImageBitmapTime} ",
+                                                    text = "BlurHash to ImageBitmap : ${imageLoadingDomainModel.blurHashToImageBitmapTime} ",
                                                     style = MaterialTheme.typography.h6.copy(
-                                                        fontSize = 15.sp
+                                                        fontSize = 12.sp
                                                     ),
                                                     textAlign = TextAlign.Start,
                                                     modifier = Modifier.fillMaxWidth()

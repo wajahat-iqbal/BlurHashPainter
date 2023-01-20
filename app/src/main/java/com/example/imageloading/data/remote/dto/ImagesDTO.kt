@@ -2,6 +2,7 @@ package com.example.imageloading.data.remote.dto
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import androidx.collection.SparseArrayCompat
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 
@@ -38,7 +39,8 @@ fun List<ImagesDTO>.asDomainModel():List<ImagesDomainModel> = this.map {
     BlurHashDecoder.decode(
         it.blurHash,
         size.first,
-        size.second
+        size.second,
+        punch = 0.7f,
     )
     if (bitmap != null ) it.asDomainModel(bitmap.asImageBitmap())
     else it.asDomainModel(null)
@@ -50,14 +52,13 @@ fun getBitMapSize(width: Int, height: Int, scale: Float): Pair<Int, Int> {
     else Pair(size.toInt(), (size * width / height).toInt())
 }
 
-
 object BlurHashDecoder {
 
     // cache Math.cos() calculations to improve performance.
     // The number of calculations can be huge for many bitmaps: width * height * numCompX * numCompY * 2 * nBitmaps
     // the cache is enabled by default, it is recommended to disable it only when just a few images are displayed
-    private val cacheCosinesX = HashMap<Int, DoubleArray>()
-    private val cacheCosinesY = HashMap<Int, DoubleArray>()
+    private val cacheCosinesX = SparseArrayCompat<DoubleArray>()
+    private val cacheCosinesY = SparseArrayCompat<DoubleArray>()
 
     /**
      * Clear calculations stored in memory cache.
@@ -76,13 +77,7 @@ object BlurHashDecoder {
      *                 if the cache does not exist yet it will be created and populated with new calculations.
      *                 By default it is true.
      */
-    fun decode(
-        blurHash: String?,
-        width: Int,
-        height: Int,
-        punch: Float = 1f,
-        useCache: Boolean = true
-    ): Bitmap? {
+    fun decode(blurHash: String?, width: Int, height: Int, punch: Float = 1f, useCache: Boolean = true): Bitmap? {
         if (blurHash == null || blurHash.length < 6) {
             return null
         }
@@ -175,8 +170,7 @@ object BlurHashDecoder {
                         b += color[2] * basis
                     }
                 }
-                imageArray[x + width * y] =
-                    Color.rgb(linearToSrgb(r), linearToSrgb(g), linearToSrgb(b))
+                imageArray[x + width * y] = Color.rgb(linearToSrgb(r), linearToSrgb(g), linearToSrgb(b))
             }
         }
         return Bitmap.createBitmap(imageArray, width, height, Bitmap.Config.ARGB_8888)
@@ -185,21 +179,21 @@ object BlurHashDecoder {
     private fun getArrayForCosinesY(calculate: Boolean, height: Int, numCompY: Int) = when {
         calculate -> {
             DoubleArray(height * numCompY).also {
-                cacheCosinesY[height * numCompY] = it
+                cacheCosinesY.put(height * numCompY, it)
             }
         }
         else -> {
-            cacheCosinesY[height * numCompY]!!
+            cacheCosinesY.get(height * numCompY)!!
         }
     }
 
     private fun getArrayForCosinesX(calculate: Boolean, width: Int, numCompX: Int) = when {
         calculate -> {
             DoubleArray(width * numCompX).also {
-                cacheCosinesX[width * numCompX] = it
+                cacheCosinesX.put(width * numCompX, it)
             }
         }
-        else -> cacheCosinesX[width * numCompX]!!
+        else -> cacheCosinesX.get(width * numCompX)!!
     }
 
     private fun DoubleArray.getCos(
@@ -235,5 +229,4 @@ object BlurHashDecoder {
         .toMap()
 
 }
-
 
