@@ -2,7 +2,7 @@ package com.example.imageloading.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.imageloading.domain.domain_model.ImageLoadingDomainModel
+
 import com.example.imageloading.domain.domain_model.ImagesDomainModel
 import com.example.imageloading.domain.use_case.GetImagesUseCase
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +43,7 @@ class ImageViewModel : ViewModel() {
 sealed class ImageLoadingState {
     object Idle : ImageLoadingState()
     object Loading : ImageLoadingState()
-    data class Success(val data: ImageLoadingDomainModel) : ImageLoadingState()
+    data class Success(val data: List<ImagesDomainModel>) : ImageLoadingState()
     object Error : ImageLoadingState()
 }
 
