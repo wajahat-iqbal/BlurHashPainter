@@ -14,7 +14,7 @@ class GetImagesUseCase(private val repository: Repository) {
         val start = System.currentTimeMillis()
         Log.i("start",start.toString())
         val images =  response.asDomainModel()
-        val time  = (System.currentTimeMillis()- start).toFloat()/images.size
+        val time  = (System.currentTimeMillis()- start).toFloat()
         Log.i("End",time.toString())
         emit( ImageLoadingDomainModel(
             images = images,

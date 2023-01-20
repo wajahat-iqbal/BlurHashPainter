@@ -1,9 +1,10 @@
 package com.example.imageloading.domain.domain_model
 
-import androidx.compose.ui.graphics.ImageBitmap
+import android.graphics.Bitmap
+
 
 data class ImagesDomainModel(
-    var bitmap: ImageBitmap? = null,
+    var bitmap: Bitmap? = null,
     val blurHash: String?  = "",
     val landscape: ImageDomainModel = ImageDomainModel(),
     val large: ImageDomainModel = ImageDomainModel(),

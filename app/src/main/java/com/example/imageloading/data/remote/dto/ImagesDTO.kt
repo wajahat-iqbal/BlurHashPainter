@@ -22,7 +22,7 @@ data class ImagesDTO(
     val tiny: ImageDTO
 )
 
-fun ImagesDTO.asDomainModel(bitmap: ImageBitmap?) = ImagesDomainModel(
+fun ImagesDTO.asDomainModel(bitmap: Bitmap?) = ImagesDomainModel(
     bitmap = bitmap,
     blurHash = blurHash,
     landscape = landscape.asDomainModel(),
@@ -34,15 +34,15 @@ fun ImagesDTO.asDomainModel(bitmap: ImageBitmap?) = ImagesDomainModel(
 )
 
 fun List<ImagesDTO>.asDomainModel():List<ImagesDomainModel> = this.map {
-    val size = getBitMapSize(it.tiny.width,it.tiny.height, 0.3f)
+    val size = getBitMapSize(it.landscape.width,it.landscape.height, 0.1f)
     val bitmap =
     BlurHashDecoder.decode(
         it.blurHash,
         size.first,
         size.second,
-        punch = 0.7f,
+        punch = 1f,
     )
-    if (bitmap != null ) it.asDomainModel(bitmap.asImageBitmap())
+    if (bitmap != null ) it.asDomainModel(bitmap)
     else it.asDomainModel(null)
 }
 
@@ -229,4 +229,3 @@ object BlurHashDecoder {
         .toMap()
 
 }
-
