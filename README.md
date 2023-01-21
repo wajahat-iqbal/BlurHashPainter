@@ -63,4 +63,4 @@ Implement the Blurhash technique in your Android app using Jetpack and the Async
 
 4. To use this technique in your project, you can use the package "com.github.wajahat-iqbal:BlurHashPainter:1.2" and add it to your dependencies.
 
-Check out Wolt's Blurhash website [B](https://blurha.sh/) for further information and resources.
+Check out Wolt's Blurhash website [Wolt's blurhash](https://blurha.sh/) for further information and resources.
