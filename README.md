@@ -8,4 +8,4 @@ https://user-images.githubusercontent.com/20109427/213825075-44efd19b-f9ea-4f0b-
 
 # How to use 
 
-<script src="https://gist.github.com/wajahat-iqbal/a49e86cf057672ea5cab121ed1872ee8.js"></script>
+<script src="https://gist.github.com/wajahat-iqbal/a49e86cf057672ea5cab121ed1872ee8.js" ></script>
