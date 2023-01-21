@@ -63,11 +63,26 @@ class MainActivity : ComponentActivity() {
 
                             Column(modifier = Modifier.padding(5.dp)) {
                                 repeat(10) {
-                                    ItemCard(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .height(200.dp)
-                                    )
+                                    Row(
+                                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                                    ){
+                                        ItemCard(
+                                            modifier = Modifier
+                                                .weight(1f)
+                                                .height(100.dp)
+                                        )
+                                        ItemCard(
+                                            modifier = Modifier
+                                                .weight(1f)
+                                                .height(100.dp)
+                                        )
+                                        ItemCard(
+                                            modifier = Modifier
+                                                .weight(1f)
+                                                .height(100.dp)
+                                        )
+                                    }
+
                                 }
                             }
 
@@ -110,8 +125,8 @@ fun Screen(imageDomainModel: List<ImagesDomainModel>, onReload: () -> Unit) {
                         item.blurHash,
                         item.landscape.width,
                         item.landscape.height,
-                        0.7F,
-                        0.3F
+                        1F,
+                        0.1F
                     ),
                     contentScale = ContentScale.FillBounds,
                 )
