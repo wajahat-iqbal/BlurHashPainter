@@ -7,5 +7,23 @@ The main benefit of using blurhash is that it allows you to show a preview of an
 https://user-images.githubusercontent.com/20109427/213825075-44efd19b-f9ea-4f0b-8085-4bb13eb8c25a.mov
 
 # How to use 
-
-<script src="https://gist.github.com/wajahat-iqbal/a49e86cf057672ea5cab121ed1872ee8.js" ></script>
+```
+AsyncImage(
+  contentDescription = "",
+  modifier = Modifier
+      .height(100.dp)
+      .width(100.dp),
+  model = ImageRequest.Builder(
+      LocalContext.current
+  ).data(item.original.src).crossfade(true).build(),
+  placeholder = BlurHashPainter(
+      item.blurHash,
+      item.landscape.width,
+      item.landscape.height,
+      1F,
+      0.1F
+  ),
+  contentScale = ContentScale.FillBounds,
+)
+}
+```
