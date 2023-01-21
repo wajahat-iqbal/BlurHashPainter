@@ -27,3 +27,4 @@ AsyncImage(
 )
 }
 ```
+[![](https://jitpack.io/v/wajahat-iqbal/BlurHashPainter.svg)](https://jitpack.io/#wajahat-iqbal/BlurHashPainter)
