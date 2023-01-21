@@ -1,4 +1,4 @@
-package com.example.imageloading.presentation
+package com.wajahatiqbal.blurhash
 
 import android.graphics.Bitmap
 import android.graphics.Color

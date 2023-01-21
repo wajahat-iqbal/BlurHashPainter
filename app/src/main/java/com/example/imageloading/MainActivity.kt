@@ -29,7 +29,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 import com.example.imageloading.domain.domain_model.ImagesDomainModel
-import com.example.imageloading.presentation.BlurHashPainter
+import com.wajahatiqbal.blurhash.BlurHashPainter
 import com.example.imageloading.presentation.ImageLoadingState
 import com.example.imageloading.presentation.ImageViewModel
 import com.example.imageloading.ui.theme.ImageLoadingTheme
