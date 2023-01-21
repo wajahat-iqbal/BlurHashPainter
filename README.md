@@ -55,7 +55,7 @@ AsyncImage(
 1. Use this hash to generate a low-resolution preview of the image, which can be displayed while the full-resolution image is still loading.
 Implement the Blurhash technique in your Android app using Jetpack and the AsyncImage component, as demonstrated in the project linked in your post.
 
-2. Store the Blurhash of the images in the database, but make sure to keep the X and Y component values lower than 4 to avoid affecting the recomposing of the image.
+2. Store the Blurhash of the images in the database, but make sure to keep the X and Y component values lower than 4 to avoid affecting the recomposing.
 
 3. Use a low scale value in the BlurHashPainter when displaying the image as a preview, but use a higher value if displaying the image in full screen.
 
