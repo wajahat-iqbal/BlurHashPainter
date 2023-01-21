@@ -1,5 +1,5 @@
 # Improve image loading with blurhash
-[![BlurHashPainter](https://jitpack.io/v/wajahat-iqbal/BlurHashPainter.svg)](https://jitpack.io/#wajahat-iqbal/BlurHashPainter)
+[![BlurHasPainter](https://jitpack.io/v/wajahat-iqbal/BlurHashPainter.svg)](https://jitpack.io/#wajahat-iqbal/BlurHashPainter)
 
 Blurhash is a technique for encoding the visual representation of an image into a compact string of characters. This string, or hash, can be used to generate a low-resolution preview of the image, which can be displayed while the full-resolution image is still loading.
 
