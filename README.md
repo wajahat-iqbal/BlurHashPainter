@@ -58,16 +58,8 @@ AsyncImage(
 
 
 ## To improve image loading with BlurhashPainter, you can follow these steps:
-
 1. Use this hash to generate a low-resolution preview of the image, which can be displayed while the full-resolution image is still loading.
-Implement the Blurhash technique in your Android app using Jetpack and the AsyncImage component, as demonstrated in the project linked in your post.
-
 2. Store the Blurhash of the images in the database, but make sure to keep the X and Y component values lower than 4 to avoid affecting the recomposing.
-
 3. Use a low scale value in the BlurHashPainter when displaying the image as a preview, but use a higher value if displaying the image in full screen.
-
 4. To use this technique in your project, you can use the package "com.github.wajahat-iqbal:BlurHashPainter:1.2" and add it to your dependencies.
-
-Check out Wolt's Blurhash website [Wolt's blurhash](https://blurha.sh/) for further information and resources.
-
-Blurhash is a technique for encoding the visual representation of an image into a compact string of characters, or a hash
+Check out Wolt's blurhash for further information and resources. By using this library your android app will have a batter performance in loading images.
