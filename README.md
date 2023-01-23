@@ -40,11 +40,14 @@ AsyncImage(
       LocalContext.current
   ).data(item.original.src).crossfade(true).build(),
   placeholder = BlurHashPainter(
-      item.blurHash,
-      item.landscape.width,
-      item.landscape.height,
-      1F,
-      0.1F
+      blurHash = item.blurHash,
+      width = item.landscape.width,
+      height = item.landscape.height,
+      punch = 1F, /* The punch parameter can be used to de- or increase the contrast of the resulting image.*/
+      scale = 0.1F /* The scale parameter scale image from 0.1F (10 max height or width depending upon the aspect ratio)
+      to 1F (100 max height or width depending upon the aspect ratio)
+      Use lowest value for scale it effect composition.
+      */
   ),
   contentScale = ContentScale.FillBounds,
 )
