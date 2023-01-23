@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/20109427/213825075-44efd19b-f9ea-4f0b-
 
 ## How add this to your project 
 
-```
+``` Gradle
 allprojects {
   repositories {
     ...
@@ -20,7 +20,7 @@ allprojects {
 }
 ```
  
-```
+``` Gradle
 dependencies {
         implementation 'com.github.wajahat-iqbal:BlurHashPainter:1.2'
 }
@@ -30,7 +30,7 @@ dependencies {
   
 
 ## How to use 
-```
+``` Kotlin
 AsyncImage(
   contentDescription = "",
   modifier = Modifier
