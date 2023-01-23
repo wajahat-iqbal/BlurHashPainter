@@ -5,11 +5,13 @@ Blurhash is a technique for encoding the visual representation of an image into 
 
 The main benefit of using blurhash is that it allows you to show a preview of an image before it fully loads, which can greatly improve the user experience. For example, when scrolling through a list of images, blurhash can be used to show a low-resolution preview of each image as soon as it comes into view, rather than waiting for the full-resolution image to load. This can make the list feel much more responsive and smooth.
 
+
+
 https://user-images.githubusercontent.com/20109427/213825075-44efd19b-f9ea-4f0b-8085-4bb13eb8c25a.mov
 
 
 
-## How add this to your project 
+## How to add this to your project 
 
 ``` Gradle
 allprojects {
@@ -67,3 +69,5 @@ Implement the Blurhash technique in your Android app using Jetpack and the Async
 4. To use this technique in your project, you can use the package "com.github.wajahat-iqbal:BlurHashPainter:1.2" and add it to your dependencies.
 
 Check out Wolt's Blurhash website [Wolt's blurhash](https://blurha.sh/) for further information and resources.
+
+Blurhash is a technique for encoding the visual representation of an image into a compact string of characters, or a hash
