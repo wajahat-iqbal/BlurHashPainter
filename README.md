@@ -1,5 +1,8 @@
 # BlurHashPainter [![BlurHasPainter](https://jitpack.io/v/wajahat-iqbal/BlurHashPainter.svg)](https://jitpack.io/#wajahat-iqbal/BlurHashPainter)
 
+
+<a href="https://www.buymeacoffee.com/wajahatiqbal"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=wajahatiqbal&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
+
 ## Blurhash
 Blurhash is a technique for encoding the visual representation of an image into a compact string of characters. This string, or hash, can be used to generate a low-resolution preview of the image, which can be displayed while the full-resolution image is still loading.
 
@@ -62,4 +65,5 @@ AsyncImage(
 2. Store the Blurhash of the images in the database, but make sure to keep the X and Y component values lower than 4 to avoid affecting the recomposing.
 3. Use a low scale value in the BlurHashPainter when displaying the image as a preview, but use a higher value if displaying the image in full screen.
 4. To use this technique in your project, you can use the package "com.github.wajahat-iqbal:BlurHashPainter:1.2" and add it to your dependencies.
+
 Check out Wolt's blurhash for further information and resources. By using this library your android app will have a batter performance in loading images.
